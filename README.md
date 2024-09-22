@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://nragland37.shinyapps.io/timeanalysis/" target="_blank">
-    <img src="img/example.png" alt="Student Time Analysis Application">
+    <img src="img/screenshot.png" alt="Student Time Analysis Application">
   </a>
 </p>
 
