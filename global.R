@@ -15,7 +15,7 @@ original <- read_csv("student_data.csv")
 # student_data_sample <- original %>%
 #   select(id, days, beg_tm, end_tm, beg_date, end_date, sess, yr,
 #          cl, major1_majortext, major1_conctext, crs_dept) %>%
-#   filter(id == 4212863)
+#   filter(id == 4201937)
 
 #*******************************************************************************
 # data cleaning ----
@@ -150,7 +150,6 @@ get_heatmap <- function(data, term_filter) {
     geom_text(aes(label = student_count),
               size = 3, color = "white", fontface = "bold") +
     scale_fill_gradientn(
-      # colors = colorRampPalette(rea_wu_colors)(100),
       colors = viridis(5),
       name = "Student Count",
     ) +
