@@ -3,6 +3,8 @@ library(tidyverse)
 library(hms)
 library(lubridate)
 library(viridis)
+library(shiny)
+library(plotly)
 
 # dependencies ----
 original <- read_csv("student_data.csv")

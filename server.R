@@ -1,8 +1,3 @@
-# libraries ----
-library(shiny)
-library(plotly)
-
-#*******************************************************************************
 # server ----
 
 server <- function(input, output, session) {
