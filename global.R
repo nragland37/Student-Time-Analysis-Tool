@@ -1,14 +1,3 @@
-#*******************************************************************************
-#
-#   This script cleans and transforms student schedule data, calculating 
-#   the total number of students available between classes for all times 
-#   and days of the week for each semester term.
-#
-#   Low Level Analysis: 
-#   - detailed overview of student schedules for every minute of the day
-#   
-#*******************************************************************************
-
 # libraries ----
 library(tidyverse)
 library(hms)
@@ -17,29 +6,26 @@ library(viridis)
 
 # dependencies ----
 original <- read_csv("UNDG_WEBG_SP_2023_CW.csv")
-# source("color_palette.R")
 
 #*******************************************************************************
 # sample data ----
-
 
 # student_data_sample <- original %>%
 #   select(id, days, beg_tm, end_tm, beg_date, end_date, sess, yr,
 #          cl, major1_majortext, major1_conctext, crs_dept) %>%
 #   filter(id == 4212863)
 
-
 #*******************************************************************************
+# data cleaning ----
 
-
-# remove online classes ----
+## remove online classes ----
 student_data <- original %>%
   filter(!(beg_tm == 0 & end_tm == 0 | days == "-------")) %>%
   select(id, sess, yr, cl, major1_majortext, major1_conctext, 
          crs_dept, days, beg_tm, end_tm, beg_date, end_date) %>%
   distinct()
 
-# convert times ----
+## convert times ----
 student_data <- student_data %>%
   mutate(
     beg_tm = hms::hms(hour = beg_tm %/% 100, minute = beg_tm %% 100), # time obj
@@ -48,12 +34,12 @@ student_data <- student_data %>%
     end_date = mdy(end_date),
   )
 
-# invalid days ----
+## invalid days ----
 invalid_days <- student_data %>%
   filter(days == "#NAME?") %>%
   arrange(id)
 
-# semester terms ----
+## semester terms ----
 student_data <- student_data %>%
   mutate(term = case_when(
     month(beg_date) %in% c(1, 2, 3, 8, 9, 10) &
@@ -63,7 +49,7 @@ student_data <- student_data %>%
     TRUE ~ "full"
   ))
 
-# separate days ----
+## separate days ----
 student_data <- student_data %>%
   filter(days != "#NAME?") %>%                        # remove invalid days
   mutate(days = str_replace_all(days, "-", "")) %>%   # replace all occurrences
@@ -80,7 +66,7 @@ student_data <- student_data %>%
     TRUE ~ days
   ))
 
-# term gap times and intervals ----
+## term gap times and intervals ----
 get_term_gaps <- function(data, term_filter) {
   term_gaps <- data %>%
     filter(term %in% c(term_filter, "full")) %>%
@@ -99,21 +85,19 @@ get_term_gaps <- function(data, term_filter) {
 term1_data <- get_term_gaps(student_data, "1")
 term2_data <- get_term_gaps(student_data, "2")
 
-# negative gaps ----
+## negative gaps ----
 negative_gaps <- bind_rows(term1_data, term2_data) %>%
   filter(gap <= 0) %>%          
   arrange(id, days, beg_tm)
 
-# concat terms ----
+## concat terms ----
 student_data <- bind_rows(term1_data, term2_data) %>%
   filter(gap > 0) %>%                                     # remove negatives
   distinct() %>%
   arrange(id, days, beg_tm)
 
-
 #*******************************************************************************
-# max gap times ----
-
+## max gap times ----
 
 filter_max_gap <- function(data, max_gap) {
   student_data <- data %>%
@@ -123,10 +107,8 @@ filter_max_gap <- function(data, max_gap) {
   return(student_data)
 }
 
-
 #*******************************************************************************
 # align gaps with intervals ----
-
 
 gap_interval_matching <- function(inc) {
   ## structure time intervals (in seconds) ----
@@ -157,10 +139,8 @@ gap_interval_matching <- function(inc) {
   return(student_results)
 }
 
-
 #*******************************************************************************
 # heatmaps ----
-
 
 get_heatmap <- function(data, term_filter) {
   p <- ggplot(data, aes(x = days, y = day_inc, fill = student_count)) +
@@ -192,10 +172,8 @@ get_heatmap <- function(data, term_filter) {
   return(p)
 }
 
-
 #*******************************************************************************
 # term increment counts ----
-
 
 get_term_counts <- function(data, term_filter) {
   term_count <- data %>%
@@ -214,6 +192,5 @@ get_term_counts <- function(data, term_filter) {
   
   return(term_count)
 }
-
 
 #*******************************************************************************
