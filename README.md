@@ -24,6 +24,28 @@ This application provides an intuitive way to visualize student availability bet
 - **Flexible Time Increments**: Adjust the maximum gap and time increment settings to suit specific analysis needs.
 - **Color Palette**: Utilizes the `viridis` color palette for clear and visually accessible data representation.
 
+## Data Cleaning and Preparation
+
+Employs advanced data cleaning techniques to ensure accurate analysis:
+
+1. **Filtering Online and Invalid Classes**:
+   - Excludes entries with invalid times or day formats to focus on in-person classes.
+
+2. **Time Conversion**:
+   - Transforms integer times (e.g., `0900`) into time objects for precise calculations.
+
+3. **Standardizing Days**:
+   - Expands and renames day codes (`MTWRF`) into readable formats (`Mon`, `Tues`).
+
+4. **Calculating and Filtering Gaps**:
+   - Computes class gaps and filters out negative or zero values to analyze only meaningful gaps.
+
+5. **Term-Based Segmentation**:
+   - Segments data by academic terms while accounting for full-term classes.
+
+6. **Time Interval Alignment**:
+   - Maps student availability gaps to every second of the day, creating highly detailed intervals for precise visualization of free time patterns. 
+
 ## File Structure
 
 - `global.R`: Contains global variables and functions that are shared across the UI and server components.
