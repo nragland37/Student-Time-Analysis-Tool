@@ -3,8 +3,15 @@
 # <p align="center"> Student Time Analysis </p>
 
 <p align="center">
-  <img src="img/example.png" alt="Student Time Analysis Application">
+  <a href="https://nragland37.shinyapps.io/timeanalysis/" target="_blank">
+    <img src="img/example.png" alt="Student Time Analysis Application">
+  </a>
 </p>
+
+<p align="center">
+  <a href="https://nragland37.shinyapps.io/timeanalysis/" target="_blank"><b>Live Application</b></a> 
+</p>
+
 
 ## Overview
 
