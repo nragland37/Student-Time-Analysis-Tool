@@ -28,23 +28,23 @@ This application provides an intuitive way to visualize student availability bet
 
 Employs advanced data cleaning techniques to ensure accurate analysis:
 
-1. **Filtering Online and Invalid Classes**:
-   - Excludes entries with invalid times or day formats to focus on in-person classes.
+1. **Filtering Online and Invalid Classes**:<br>
+   Excludes entries with invalid times or day formats to focus on in-person classes.
 
-2. **Time Conversion**:
-   - Transforms integer times (e.g., `0900`) into time objects for precise calculations.
+3. **Time Conversion**:<br>
+   Transforms integer times (e.g., `0900`) into time objects for precise calculations.
 
-3. **Standardizing Days**:
-   - Expands and renames day codes (`MTWRF`) into readable formats (`Mon`, `Tues`).
+5. **Standardizing Days**:<br>
+   Expands and renames day codes (`MTWRF`) into readable formats (`Mon`, `Tues`).
 
-4. **Calculating and Filtering Gaps**:
-   - Computes class gaps and filters out negative or zero values to analyze only meaningful gaps.
+7. **Calculating and Filtering Gaps**:<br>
+   Computes class gaps and filters out negative or zero values to analyze only meaningful gaps.
 
-5. **Term-Based Segmentation**:
-   - Segments data by academic terms while accounting for full-term classes.
+9. **Term-Based Segmentation**:<br>
+    Segments data by academic terms while accounting for full-term classes.
 
-6. **Time Interval Alignment**:
-   - Maps student availability gaps to every second of the day, creating highly detailed intervals for precise visualization of free time patterns. 
+11. **Time Interval Alignment**:<br>
+    Maps student availability gaps to every second of the day, creating highly detailed intervals for precise visualization of free time patterns. 
 
 ## File Structure
 
@@ -57,13 +57,10 @@ Employs advanced data cleaning techniques to ensure accurate analysis:
 ### Prerequisites
 
 - **R**: Ensure that R is installed on your system. You can download it from [here](https://cran.r-project.org/).
-- **Shiny Package**: Install the Shiny package in R by running the following command:
-  
+- **Required Packages**: Install the necessary packages by running the following command in R:
+
   ```R
-  install.packages("shiny")
-  ```
-  
-- **Other Required Packages**: You may also need to install additional packages used in the scripts such as `ggplot2`, `dplyr`, `tidyverse`, etc.
+  install.packages(c("tidyverse", "hms", "lubridate", "viridis", "shiny", "plotly"))
 
 ### Installation
 
