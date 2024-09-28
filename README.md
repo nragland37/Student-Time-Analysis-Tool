@@ -15,7 +15,7 @@
 
 ## Overview
 
-This application provides an intuitive way to visualize student availability between classes using interactive heatmaps. It allows institutions to optimize class schedules and resource allocation by identifying the most common free times across various days and times.
+This application provides an intuitive way to visualize student availability between classes using interactive heatmaps. It allows institutions to optimize class schedules and resource allocation by identifying the most common free times across various days.
 
 ## Features
 
