@@ -3,18 +3,16 @@
 </h1>
 
 <p align="center">
-  Application for visualizing student availability to optimize university involvement
+  <a href="https://nragland37.shinyapps.io/timeanalysis/" target="_blank">
+    <img src="assets/shiny-demo.gif" alt="Student Time Analysis Application"> 
+  </a>
 </p>
 
 <p align="center">
-  Built with <a href="https://www.r-project.org/" target="_blank">R</a> and hosted on <a href="https://www.shinyapps.io/" target="_blank">ShinyApps.io</a>
+  <a href="https://nragland37.shinyapps.io/timeanalysis/" target="_blank"><b>Live Application</b></a> 
 </p>
 
-![Demo](/assets/shiny-demo.gif)
-
-This application visualizes student availability during breaks between classes using interactive heatmaps. It focuses on identifying periods when students are free, allowing institutions to optimize hosting events and getting students more involved. The tool features a variety of filtering options to target specific groups, such as departments or degree programs, allowing for tailored event planning. 
-
-For instance, by adjusting the filters, one can identify optimal times for events like an art expo, ensuring attendance from art students who have classes with breaks in between. This approach effectively focuses on students present on campus during key times, rather than those without class schedules.
+This application visualizes student availability during breaks between classes using interactive heatmaps. It helps identify periods when students are free, enabling institutions to optimize event timing and boost student involvement. The tool features a variety of filtering options to target specific groups, such as departments or degree programs, allowing for tailored event planning for different groups of students.  
 
 ## Features
 
