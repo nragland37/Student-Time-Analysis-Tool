@@ -1,54 +1,42 @@
-[![License](https://img.shields.io/badge/license-MIT-blue)](https://github.com/nragland37/student-time-analysis/blob/main/LICENSE)
-
-# <p align="center"> Student Time Analysis </p>
+<h1 align="center">
+  Student Time Analysis
+</h1>
 
 <p align="center">
-  <a href="https://nragland37.shinyapps.io/timeanalysis/" target="_blank">
-    <img src="assets/shiny-demo.gif" alt="Student Time Analysis Application"> 
-  </a>
+  Application for visualizing student availability to optimize university involvement
 </p>
 
 <p align="center">
-  <a href="https://nragland37.shinyapps.io/timeanalysis/" target="_blank"><b>Live Application</b></a> 
+  Built with <a href="https://www.r-project.org/" target="_blank">R</a> and hosted on <a href="https://www.shinyapps.io/" target="_blank">ShinyApps.io</a>
 </p>
 
+![Demo](/assets/shiny-demo.gif)
 
-## Overview
+This application visualizes student availability during breaks between classes using interactive heatmaps. It focuses on identifying periods when students are free, allowing institutions to optimize hosting events and getting students more involved. The tool features a variety of filtering options to target specific groups, such as departments or degree programs, allowing for tailored event planning. 
 
-This application provides an intuitive way to visualize student availability between classes using interactive heatmaps. It allows institutions to optimize class schedules and resource allocation by identifying the most common free times across various days.
+For instance, by adjusting the filters, one can identify optimal times for events like an art expo, ensuring attendance from art students who have classes with breaks in between. This approach effectively focuses on students present on campus during key times, rather than those without class schedules.
 
 ## Features
 
-- **Interactive Heatmap Visualization**: View student availability across different times and days.
+- **Interactive Heatmap Visualization**: Displays student availability dynamically across various times and days.
 - **Customizable Filters**: Filter data by semester term, day of the week, class level, major, concentration, department, and more.
 - **Flexible Time Increments**: Adjust the maximum gap and time increment settings to suit specific analysis needs.
-- **Color Palette**: Utilizes the `viridis` color palette for clear and visually accessible data representation.
+- **Color Palette**: Utilizes the 'viridis' color palette for clear, accessible data representation.
 
 ## Data Cleaning and Preparation
 
-Employs advanced data cleaning techniques to ensure accurate analysis:
+Sophisticated data cleaning techniques ensure reliable analyses:
 
-1. **Filtering Online and Invalid Classes**:<br>
-   Excludes entries with invalid times or day formats to focus on in-person classes.
-
-3. **Time Conversion**:<br>
-   Transforms integer times (e.g., `0900`) into time objects for precise calculations.
-
-5. **Standardizing Days**:<br>
-   Expands and renames day codes (`MTWRF`) into readable formats (`Mon`, `Tues`).
-
-7. **Calculating and Filtering Gaps**:<br>
-   Computes class gaps and filters out negative or zero values to analyze only meaningful gaps.
-
-9. **Term-Based Segmentation**:<br>
-    Segments data by academic terms while accounting for full-term classes.
-
-11. **Time Interval Alignment**:<br>
-    Maps student availability gaps to every second of the day, creating highly detailed intervals for precise visualization of free time patterns. 
+- **Filtering Online and Invalid Classes**: Excludes entries with invalid times or day formats to focus on in-person classes.
+- **Time Conversion**: Transforms integer times (e.g., 0900) into time objects for precise calculations.
+- **Standardizing Days**: Expands and renames day codes (MTWRF) into readable formats (Mon, Tues).
+- **Calculating and Filtering Gaps**:Computes class gaps and filters out negative or zero values to analyze only meaningful gaps.
+- **Term-Based Segmentation**: Segments data by academic terms while accounting for full-term classes.
+- **Time Interval Alignment**: Maps student availability gaps to every second of the day, creating highly detailed intervals for precise visualization of free time patterns.
 
 ## File Structure
 
-- `global.R`: Contains global variables and functions that are shared across the UI and server components.
+- `global.R`e: Contains global variables and functions that are shared across the UI and server components.
 - `server.R`: Defines the server-side logic of the application, including data processing and reactive expressions.
 - `ui.R`: Describes the user interface of the application, including layout, input controls, and visual output elements.
 
@@ -56,11 +44,12 @@ Employs advanced data cleaning techniques to ensure accurate analysis:
 
 ### Prerequisites
 
-- **R**: Ensure that R is installed on your system. You can download it from [here](https://cran.r-project.org/).
-- **Required Packages**: Install the necessary packages by running the following command in R:
-
+- **R Installation**: Confirm that R is installed on your system. [Download R here](https://cran.r-project.org/).
+- **Required Packages**: Install the necessary R packages:
   ```R
   install.packages(c("tidyverse", "hms", "lubridate", "viridis", "shiny", "plotly"))
+  ```
+- **Data File**: No real student data provided. For testing, create your own `student_data.csv` file.
 
 ### Installation
 
@@ -73,22 +62,18 @@ Employs advanced data cleaning techniques to ensure accurate analysis:
    cd student-time-analysis
    ```
 
-3. **Run the application**:
-
-   Open RStudio or an R environment and execute the following commands:
+3. **Launch the application**:
    ```R
-   # Run the application
    runApp()
    ```
-
-   Alternatively, you can use the following command to run the app directly from the command line:
+   Alternatively, run directly from the command line:
    ```bash
    Rscript -e 'shiny::runApp()'
    ```
 
 ## Data Information
 
-**Note:** The original student data file (`student_data.csv`) is not included in this repository to protect privacy. To run the application locally, you can create a CSV file with the following structure and sample data:
+The original student_data.csv file is not included to protect privacy. To run the application locally, create a CSV file with the following structure and sample data:
 
 ```
 id, sess, yr, cl, major1_majortext, major1_conctext, crs_dept, days, beg_tm, end_tm, beg_date, end_date
@@ -97,5 +82,4 @@ id, sess, yr, cl, major1_majortext, major1_conctext, crs_dept, days, beg_tm, end
 345678, SU, 2023, SR, Psychology, None assigned, PSYC, --M-W---, 1300, 1420, 2023-06-01, 2023-07-15
 ```
 
-Ensure your CSV file follows this format to match the application's expected input.
-
+Note: Ensure that `student_data.csv` follows this format and is placed in the same directory as `global.R`
