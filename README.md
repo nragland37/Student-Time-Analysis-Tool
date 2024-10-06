@@ -66,7 +66,7 @@ install.packages(c("tidyverse", "hms", "lubridate", "viridis", "shiny", "plotly"
    ```
 
 > [!IMPORTANT]  
->  To protect privacy, the original CSV file is not included. Create `student_data.csv` (not included for privacy) and place it in the same directory as `global.R` with the following format:
+>  To protect privacy, the original CSV file is not included. Create `student_data.csv` and place it in the same directory as `global.R` with the following format:
 > ```
 > id, sess, yr, cl, major1_majortext, major1_conctext, crs_dept, days, beg_tm, end_tm, beg_date, end_date
 > 123456, FA, 2023, SO, Business Administration, Finance, BUSN, --M-W-F-, 0900, 0950, 2023-01-16, 2023-05-12
