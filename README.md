@@ -1,3 +1,5 @@
+[![License](https://img.shields.io/badge/license-MIT-blue)](https://github.com/nragland37/Student-Time-Analysis-Tool/blob/main/LICENSE)
+
 <h1 align="center">
   Student Time Analysis
 </h1>
@@ -23,8 +25,6 @@ This application visualizes student availability during breaks between classes u
 
 ## Data Cleaning and Preparation
 
-Sophisticated data cleaning techniques ensure reliable analyses:
-
 - **Filtering Online and Invalid Classes**: Excludes entries with invalid times or day formats to focus on in-person classes.
 - **Time Conversion**: Transforms integer times (e.g., 0900) into time objects for precise calculations.
 - **Standardizing Days**: Expands and renames day codes (MTWRF) into readable formats (Mon, Tues).
@@ -34,7 +34,7 @@ Sophisticated data cleaning techniques ensure reliable analyses:
 
 ## File Structure
 
-- `global.R`e: Contains global variables and functions that are shared across the UI and server components.
+- `global.R`: Contains global variables and functions that are shared across the UI and server components.
 - `server.R`: Defines the server-side logic of the application, including data processing and reactive expressions.
 - `ui.R`: Describes the user interface of the application, including layout, input controls, and visual output elements.
 
@@ -42,25 +42,21 @@ Sophisticated data cleaning techniques ensure reliable analyses:
 
 ### Prerequisites
 
-- **R Installation**: Confirm that R is installed on your system. [Download R here](https://cran.r-project.org/).
-- **Required Packages**: Install the necessary R packages:
-  ```R
-  install.packages(c("tidyverse", "hms", "lubridate", "viridis", "shiny", "plotly"))
-  ```
-- **Data File**: No real student data provided. For testing, create your own `student_data.csv` file.
+1. **Download and Install R**: [Here](https://cran.r-project.org/)
+2. **Required Packages**:
+```R
+install.packages(c("tidyverse", "hms", "lubridate", "viridis", "shiny", "plotly"))
+```
+3. **Data File**: Create and properly format the student_data.csv
 
 ### Installation
 
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/nragland37/student-time-analysis.git
-   ```
-2. **Navigate to the project directory**:
-   ```bash
    cd student-time-analysis
    ```
-
-3. **Launch the application**:
+2. **Launch the application**:
    ```R
    runApp()
    ```
@@ -69,15 +65,11 @@ Sophisticated data cleaning techniques ensure reliable analyses:
    Rscript -e 'shiny::runApp()'
    ```
 
-## Data Information
-
-The original student_data.csv file is not included to protect privacy. To run the application locally, create a CSV file with the following structure and sample data:
-
-```
-id, sess, yr, cl, major1_majortext, major1_conctext, crs_dept, days, beg_tm, end_tm, beg_date, end_date
-123456, FA, 2023, SO, Business Administration, Finance, BUSN, --M-W-F-, 0900, 0950, 2023-01-16, 2023-05-12
-234567, SP, 2023, JR, Computer Science, Cybersecurity, COSC, --T-R--, 1000, 1120, 2023-01-16, 2023-05-12
-345678, SU, 2023, SR, Psychology, None assigned, PSYC, --M-W---, 1300, 1420, 2023-06-01, 2023-07-15
-```
-
-Note: Ensure that `student_data.csv` follows this format and is placed in the same directory as `global.R`
+> [!IMPORTANT]  
+>  To protect privacy, the original CSV file is not included. Create `student_data.csv` (not included for privacy) and place it in the same directory as `global.R` with the following format:
+> ```
+> id, sess, yr, cl, major1_majortext, major1_conctext, crs_dept, days, beg_tm, end_tm, beg_date, end_date
+> 123456, FA, 2023, SO, Business Administration, Finance, BUSN, --M-W-F-, 0900, 0950, 2023-01-16, 2023-05-12
+> 234567, SP, 2023, JR, Computer Science, Cybersecurity, COSC, --T-R--, 1000, 1120, 2023-01-16, 2023-05-12
+> 345678, SU, 2023, SR, Psychology, None assigned, PSYC, --M-W---, 1300, 1420, 2023-06-01, 2023-07-15
+> ```
